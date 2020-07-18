@@ -1,0 +1,29 @@
+from BinaryTree import BinaryTree, Node
+from getHeightOfBT import getHeightOfBT
+from printElementsAtAGivenLvl import printElementsAtAGivenLevel
+
+tree=BinaryTree()
+tree.createRootNode(2, None, None)
+tree.root.left=Node(7, None, None)
+tree.root.left.left=Node(2, None, None)
+tree.root.left.right=Node(6, None, None)
+tree.root.left.right.left=Node(5, None, None)
+tree.root.left.right.right=Node(11, None, None)
+
+tree.root.right=Node(5, None, None)
+tree.root.right.right=Node(9, None, None)
+tree.root.right.right.left=Node(4, None, None)
+
+# reverseLevelwiseLOT
+# ************************************************************************************************************************
+
+def reverseLevelwiseLOT(node):
+    treeHeight=getHeightOfBT(node)
+    for level in range((treeHeight+1), 0, -1):
+        print("\n Level "+str(level)+":-")
+        printElementsAtAGivenLevel(node, level) 
+
+# ************************************************************************************************************************
+
+print("reverseLevelwiseLOT LOT of the given tree is: ")
+reverseLevelwiseLOT(tree.root)
