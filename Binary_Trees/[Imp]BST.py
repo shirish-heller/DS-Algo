@@ -50,23 +50,27 @@ class BST:
             node.right=None
         return successor
 
-#Iterative approach
-    # def insertNode(self, val):
-    #     node=self.root
-    #     while(node!=None):
-    #         if(val>node.val):
-    #             if(node.right):
-    #                 node=node.right
-    #             else:
-    #                 node.right=Node(val, None, None)
-    #                 return
-    #         else:
-    #             if(node.left):
-    #                 node=node.left
-    #             else:
-    #                 node.left=Node(val, None, None)
-    #                 return
+    def inorder(self, node):
+        if(node==None):
+            return
+        self.inorder(node.left)
+        print(node.val, end=" | ")
+        self.inorder(node.right)
 
+    def preorder(self, node):
+        if(node==None):
+            return
+        print(node.val, end=" | ")
+        self.preorder(node.left)
+        self.preorder(node.right)
+
+    def postorder(self, node):
+        if(node==None):
+            return
+        self.postorder(node.right)
+        print(node.val, end=" | ")
+        self.postorder(node.left)
+        
     def isPresent(self, val):
         node=self.root
         while(node!=None):
@@ -96,7 +100,15 @@ bst.insertNode(bst.root, 17)
 bst.insertNode(bst.root, 1)
 bst.insertNode(bst.root, 7)
 
-bst.deleteNode(bst.root, 20)
+print("\n In-Order Traversal is :- ")
+bst.inorder(bst.root)
+print("\n Pre-Order Traversal is :- ")
+bst.preorder(bst.root)
+print("\n Post-Order Traversal is :- ")
+bst.postorder(bst.root)
+
 a=bst.isPresent(20)
+bst.deleteNode(bst.root, 20)
+
 
 
