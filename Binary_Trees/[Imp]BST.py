@@ -70,24 +70,65 @@ class BST:
         self.postorder(node.right)
         print(node.val, end=" | ")
         self.postorder(node.left)
-        
-    def isPresent(self, val):
-        node=self.root
+    
+    def isPresent(self, node, val):
+        if(node==None):
+            return False
+        if(node.val==val):
+            return True
+        resLeft=self.isPresent(node.left, val)
+        resRight=self.isPresent(node.right, val)
+        return True if (resLeft or resRight) else False
+
+    def getParentNode(self, node, val):
+        if(node==None):
+            return None
+        parentNode=None
         while(node!=None):
-            if(val==node.val):
-                return True
-            elif(val>node.val):
-                if(node.right):
-                    node=node.right
-                else:
-                    node.right=Node(val, None, None)
-                    return False
+            if(node.val==val):
+                return parentNode
+            parentNode=node.val
+            if(val>node.val):
+                node=node.right
             else:
-                if(node.left):
-                    node=node.left
-                else:
-                    node.left=Node(val, None, None)
-                    return False
+                node=node.left
+        return None
+
+    def getSiblingNode(self, node, val):
+        if(node==None):
+            return None
+        parentNode=None
+        while(node!=None):
+            if(node.val==val):
+                return (parentNode.right.val if parentNode.right else None) if (parentNode.left.val==node.val) else (parentNode.left.val if parrentNode.left else None)
+            parentNode=node
+            if(val>node.val):
+                node=node.right
+            else:
+                node=node.left
+        return None
+
+# Iterative
+    # def isPresent(self, val):
+    #     node=self.root
+    #     while(node!=None):
+    #         if(val==node.val):
+    #             return True
+    #         elif(val>node.val):
+    #             if(node.right):
+    #                 node=node.right
+    #             else:
+    #                 node.right=Node(val, None, None)
+    #                 return False
+    #         else:
+    #             if(node.left):
+    #                 node=node.left
+    #             else:
+    #                 node.left=Node(val, None, None)
+    #                 return False
+
+
+
 
 bst=BST(4)
 bst.insertNode(bst.root, 2)
@@ -107,7 +148,12 @@ bst.preorder(bst.root)
 print("\n Post-Order Traversal is :- ")
 bst.postorder(bst.root)
 
-a=bst.isPresent(20)
+a=bst.isPresent(bst.root, 17)
+print("\n \n Present status:- ", a)
+print("\n \n Parent Node is :- ", bst.getParentNode(bst.root, 10))
+bst.deleteNode(bst.root, 20)
+
+print("\n \n Sibling Node is :- ", bst.getSiblingNode(bst.root, 12))
 bst.deleteNode(bst.root, 20)
 
 
