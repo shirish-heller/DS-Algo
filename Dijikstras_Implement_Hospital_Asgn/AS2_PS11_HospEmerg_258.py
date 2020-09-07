@@ -105,16 +105,16 @@ class PriorityQueue:
         return minElement
 
 class Graph:
-    def __init__(self, startingNode, endingNode):
-        self.graph={}
-        self.startingNode=startingNode;
-        self.endingNode=endingNode;
+    # def __init__(self, startingNode, endingNode):
+    #     self.graph={}
+    #     self.startingNode=startingNode
+    #     self.endingNode=endingNode
     def __init__(self):
         self.graph={}
     def setStartingNode(self, node):
-        self.startingNode=node;
+        self.startingNode=node
     def setEndingNode(self, node):
-        self.endingNode=node;
+        self.endingNode=node
     def getNodes(self):
         return self.graph.keys()
     def checkIfNodePresent(self, node):
@@ -126,14 +126,14 @@ class Graph:
     def addEdge(self, fromNode, toNode, weight):
         self.graph.get(fromNode).update({toNode: weight})
         self.graph.get(toNode).update({fromNode: weight})
-    def printGraph(self):
-        print(self.graph)
+    # def printGraph(self):
+    #     print(self.graph)
     
 def initialize():
-    routeMap = Graph();
+    routeMap = Graph()
     inputFile = open("inputPS11.txt", "r")
     data = inputFile.read()
-    print(data)
+    # print(data)
     rows = data.split("\n")
     for row in rows:
         if(row.find("Hospital") != -1):
@@ -151,7 +151,7 @@ def initialize():
                 routeMap.addNode({endingNode: {}})
             routeMap.addEdge(startingNode, endingNode, weight)
     
-    routeMap.printGraph()
+    # routeMap.printGraph()
     return routeMap
 
 def getShortestPath(routeMap):
@@ -186,9 +186,9 @@ def getShortestPath(routeMap):
             return
     calculateRouteCosts(routeMap.startingNode)
     # print("routCosts = ", routeCosts)
-    print("\n nodeCosts = \n", nodeCosts)
+    # print("\n nodeCosts = \n", nodeCosts)
     # print(" \n\n Shortest path from starting node ", routeMap.startingNode, " to ending Node ", routeMap.endingNode, " is = ", nodeCosts.get(routeMap.endingNode).get("path") + routeMap.endingNode, " DISTANCE = ", nodeCosts.get(routeMap.endingNode).get("cost"))
-    return nodeCosts;
+    return nodeCosts
 
 
 def main():
