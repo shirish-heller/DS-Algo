@@ -12,7 +12,7 @@ def mergeSort(a):
         i,j=0,0
         mergedArr=[]
 
-        # Merging Sorted Arrays
+        # Merging Sorted Sub-Arrays
         while(1):
             if(i>=len(topSortedArr)):
                 mergedArr.extend(bottomSortedArr[j:len(bottomSortedArr)])
