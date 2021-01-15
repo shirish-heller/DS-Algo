@@ -13,14 +13,14 @@ tree.root.right.right=Node(9, None, None)
 tree.root.right.right.left=Node(4, None, None)
 
 # ************************************************************************************************************************
-def preorder(node):
+def postorder(node):
     if(node==None):
         return
-    preorder(node.right)
+    postorder(node.left)
+    postorder(node.right)
     print(str(node.val))
-    preorder(node.left)
 # ************************************************************************************************************************
 
 print("\n********** POST-ORDER-TRAVERSAL **********\n")
-preorder(tree.root)
+postorder(tree.root)
 print("\n******************\n")

@@ -1,3 +1,4 @@
+import time;
 def mergeSort(a):
     if(len(a)==1):
         return a
@@ -29,5 +30,6 @@ def mergeSort(a):
         return mergedArr
                     
 # TESTING
+print(time.time())
 inpArr=[5,4,6,2,9,3,1]
 print(mergeSort(inpArr))
