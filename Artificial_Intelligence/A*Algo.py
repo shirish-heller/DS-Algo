@@ -27,7 +27,7 @@ def searchWithAStar(graph, goalNode):
 nodes = ['S', 'B', 'C', 'D', 'E', 'F', 'G']
 edges = {
     'S': [('B',4), ('C',3)],
-    'B': [('E',12)],
+    'B': [('E',12), ('F', 5)],
     'C': [('D',7), ('E',10)],
     'D': [('E',2)],
     'E': [('G',5)],
