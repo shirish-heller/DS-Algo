@@ -7,10 +7,11 @@ actual_cost_from_start = {}
 total_points = {}
 visited_nodes = {}
 visited_white_pieces = {}
+# visited_black_pieces = {}
 visited_pieces = {}
 white_piece_positions = []
 pts_multiplier = 5
-pts_distance_multiplier = 2
+pts_distance_multiplier = 3
 is_king_found = False
 
 def search_path_for_queen(piecePositions):
@@ -54,10 +55,10 @@ def update_points(neighbour_data, neighbour_pos, currentNodePos):
             visited_white_pieces[neighbour_pos] = True
             visited_pieces[neighbour_pos] = True
         elif(neighbour_data[0] == 'B'):
-            total_points[(neighbour_pos[0]+1, neighbour_pos[1])] = (total_points[(neighbour_pos[0]+1, neighbour_pos[1])]-1) if total_points.get((neighbour_pos[0]+1, neighbour_pos[1]))!=None else 1
-            total_points[(neighbour_pos[0]-1, neighbour_pos[1])] = (total_points[(neighbour_pos[0]-1, neighbour_pos[1])]-1) if total_points.get((neighbour_pos[0]-1, neighbour_pos[1]))!=None else 1
-            total_points[(neighbour_pos[0], neighbour_pos[1]+1)] = (total_points[(neighbour_pos[0], neighbour_pos[1]+1)]-1) if total_points.get((neighbour_pos[0], neighbour_pos[1]+1))!=None else 1
-            total_points[(neighbour_pos[0], neighbour_pos[1]-1)] = (total_points[(neighbour_pos[0], neighbour_pos[1]-1)]-1) if total_points.get((neighbour_pos[0], neighbour_pos[1]-1))!=None else 1
+            total_points[(neighbour_pos[0]+1, neighbour_pos[1])] = (total_points[(neighbour_pos[0]+1, neighbour_pos[1])]-1) if total_points.get((neighbour_pos[0]+1, neighbour_pos[1]))!=None else 0
+            total_points[(neighbour_pos[0]-1, neighbour_pos[1])] = (total_points[(neighbour_pos[0]-1, neighbour_pos[1])]-1) if total_points.get((neighbour_pos[0]-1, neighbour_pos[1]))!=None else 0
+            total_points[(neighbour_pos[0], neighbour_pos[1]+1)] = (total_points[(neighbour_pos[0], neighbour_pos[1]+1)]-1) if total_points.get((neighbour_pos[0], neighbour_pos[1]+1))!=None else 0
+            total_points[(neighbour_pos[0], neighbour_pos[1]-1)] = (total_points[(neighbour_pos[0], neighbour_pos[1]-1)]-1) if total_points.get((neighbour_pos[0], neighbour_pos[1]-1))!=None else 0
             visited_pieces[neighbour_pos] = True
             total_points[currentNodePos] = (total_points[currentNodePos]-1) if total_points.get(currentNodePos)!=None else 0
 
